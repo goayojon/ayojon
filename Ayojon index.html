@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>আয়োজন - Event Management</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Bengali Fonts -->
+  <style>
+    @font-face {
+      font-family: 'LiAlinurSaikatUnicode-Regular';
+      src: url('LiAlinurSaikatUnicode-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Li Ador Noirrit Regular';
+      src: url('LiAdorNoirritRegular.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'Li Ador Noirrit Regular', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    header { background-color: #1e3d59; }
+    .navbar-brand img { height: 60px; }
+    .navbar-brand span {
+      font-family: 'LiAlinurSaikatUnicode-Regular';
+      font-size: 3rem;
+      color: #fdffc8;   
+      margin-left: 15px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('hero-bg.jpg') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      top:0; left:0;
+    }
+    .hero .content { position: relative; z-index: 1; }
+    .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.5rem; margin-bottom: 30px; }
+
+    /* Sections */
+    .services h2, .gallery h2, .contact h2 {
+      color: #1e3d59;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+    .service-card, .gallery img {
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover, .gallery img:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Contact */
+    .contact form input, .contact form textarea {
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1e3d59;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed; display:none; justify-content:center; align-items:center;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.8); z-index:2000;
+    }
+    #lightbox img { max-width:90%; max-height:80%; border-radius:10px; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color:#1e3d59;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="ayojon logo fin-01.png" alt="Ayojon Logo">
+      <span>আয়োজন</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link text-white" href="#hero">হোম</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#services">সার্ভিসেস</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#gallery">গ্যালারি</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#contact">যোগাযোগ</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+  <div class="content text-center">
+    <h1>আপনার স্বপ্নের অনুষ্ঠান বাস্তবায়ন</h1>
+    <p>এক্সপার্ট টিম, সম্পূর্ণ পরিকল্পনা এবং সুন্দর আয়োজন।</p>
+    <a href="#contact" class="btn btn-warning btn-lg">এখনই বুক করুন</a>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services py-5" id="services">
+  <div class="container text-center">
+    <h2>আমাদের সার্ভিসেস</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card p-3 service-card h-100">
+          <h5 class="card-title">বিয়ে ও পার্টি</h5>
+          <p class="card-text">আপনার বিশেষ দিনে স্মরণীয় মুহূর্ত তৈরি করা।</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 service-card h-100">
+          <h5 class="card-title">কর্পোরেট ইভেন্ট</h5>
+          <p class="card-text">কোম্পানি ও প্রতিষ্ঠানের জন্য প্রফেশনাল আয়োজন।</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 service-card h-100">
+          <h5 class="card-title">সাংস্কৃতিক অনুষ্ঠান</h5>
+          <p class="card-text">উৎসব ও সাংস্কৃতিক ইভেন্টের পূর্ণ আয়োজন।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery py-5" id="gallery">
+  <div class="container text-center">
+    <h2>গ্যালারি</h2>
+    <div class="row g-3 justify-content-center">
+      <div class="col-md-3"><img src="event2.jpg" alt="Event 1" class="img-fluid gallery"></div>
+      <div class="col-md-3"><img src="event2.jpg" alt="Event 2" class="img-fluid gallery"></div>
+      <div class="col-md-3"><img src="event2.jpg" alt="Event 3" class="img-fluid gallery"></div>
+      <div class="col-md-3"><img src="event2.jpg" alt="Event 4" class="img-fluid gallery"></div>
+      <div class="col-md-3"><img src="event2.jpg" alt="Event 4" class="img-fluid gallery"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact py-5" id="contact">
+  <div class="container text-center">
+    <h2>যোগাযোগ করুন / বুক করুন</h2>
+    <form class="mx-auto" style="max-width:600px;">
+      <input type="text" class="form-control mb-3" placeholder="নাম" required>
+      <input type="email" class="form-control mb-3" placeholder="ইমেল" >
+      <input type="tel" class="form-control mb-3" placeholder="ফোন" required>
+      <input type="text" class="form-control mb-3" placeholder="ইভেন্টের ধরন" required>
+      <textarea class="form-control mb-3" rows="5" placeholder="বার্তা" required></textarea>
+      <button type="submit" class="btn btn-primary btn-lg">পাঠান</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; ২০২৫ আয়োজন. সর্বস্বত্ব সংরক্ষিত।
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox"><img src="" alt="Lightbox"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Lightbox JS -->
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lbImage = lightbox.querySelector('img');
+  document.querySelectorAll('.gallery').forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lbImage.src = img.src;
+    });
+  });
+  lightbox.addEventListener('click', () => { lightbox.style.display = 'none'; });
+</script>
+
+</body>
+</html>
